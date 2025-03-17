@@ -1,6 +1,7 @@
 package com.company.jobautomation.service;
 
 import com.company.jobautomation.dto.JobDTO;
+import com.company.jobautomation.dto.JobFilter;
 import com.company.jobautomation.entity.Job;
 import com.company.jobautomation.enums.JobBoard;
 import com.company.jobautomation.mapper.JobMapper;
@@ -27,7 +28,7 @@ public class MainJobService implements JobService {
 
     @Override
     @Transactional
-    public Integer fetchAndSaveJobs(JobBoard jobBoard) {
+    public Integer fetchAndSaveJobs(JobBoard jobBoard, JobFilter jobFilter) {
 
         APIClientService apiClientService = apiClientServices.get(jobBoard.toString());
 
@@ -36,7 +37,7 @@ public class MainJobService implements JobService {
         }
 
         log.info("Fetching jobs from {} API", jobBoard);
-        return saveJobs(apiClientService.fetchJobs());
+        return saveJobs(apiClientService.fetchJobs(jobFilter));
     }
 
     @Override

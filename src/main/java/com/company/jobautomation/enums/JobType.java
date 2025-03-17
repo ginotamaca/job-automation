@@ -8,6 +8,7 @@ public enum JobType {
     TEMPORARY,
     FREELANCE,
     INTERNSHIP,
-    OTHER
+    MIXED,
+    UNKNOWN
 
 }
