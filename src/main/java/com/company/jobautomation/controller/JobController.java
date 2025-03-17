@@ -26,9 +26,9 @@ public class JobController {
         return ResponseEntity.ok(jobService.fetchAndSaveJobs(jobBoard, jobFilter) + " jobs fetched and saved from " + jobBoard);
     }
 
-    @GetMapping
-    public ResponseEntity<List<JobDTO>> getJobs() {
-        return ResponseEntity.ok(jobService.getJobs());
+    @GetMapping("/{jobBoard}")
+    public ResponseEntity<List<JobDTO>> getJobs(@PathVariable JobBoard jobBoard) {
+        return ResponseEntity.ok(jobService.getJobs(jobBoard));
     }
 
 }

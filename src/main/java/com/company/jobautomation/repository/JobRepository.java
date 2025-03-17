@@ -9,10 +9,7 @@ import java.util.List;
 
 public interface JobRepository extends JpaRepository<Job, JobId> {
 
-    List<Job> findAll();
-
-    List<Job> findByViewedFalse();
     boolean existsById(JobId id);
-    List<Job> findByJobBoard(JobBoard jobBoard);
+    List<Job> findByJobBoardAndViewedFalse(JobBoard jobBoard);
 
 }

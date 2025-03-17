@@ -9,6 +9,6 @@ import java.util.List;
 public interface JobService {
 
     Integer fetchAndSaveJobs(JobBoard jobBoard, JobFilter jobFilter);
-    List<JobDTO> getJobs();
+    List<JobDTO> getJobs(JobBoard jobBoard);
 
 }

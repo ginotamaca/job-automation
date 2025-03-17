@@ -41,8 +41,8 @@ public class MainJobService implements JobService {
     }
 
     @Override
-    public List<JobDTO> getJobs() {
-        List<Job> jobs = jobRepository.findAll();
+    public List<JobDTO> getJobs(JobBoard jobBoard) {
+        List<Job> jobs = jobRepository.findByJobBoardAndViewedFalse(jobBoard);
         return jobMapper.toDTOs(jobs);
     }
 
