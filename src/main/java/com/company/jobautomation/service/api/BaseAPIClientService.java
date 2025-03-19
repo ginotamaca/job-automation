@@ -13,9 +13,11 @@ import java.util.List;
 @Slf4j
 public abstract class BaseAPIClientService implements APIClientService {
 
-    private final String apiUrl;
-    private final RestTemplate restTemplate;
-    private final ObjectMapper objectMapper;
+    private String apiUrl;
+    private RestTemplate restTemplate;
+    private ObjectMapper objectMapper;
+
+    protected BaseAPIClientService() {}
 
     protected BaseAPIClientService(String apiUrl, RestTemplate restTemplate, ObjectMapper objectMapper) {
         this.apiUrl = apiUrl;
@@ -23,6 +25,7 @@ public abstract class BaseAPIClientService implements APIClientService {
         this.objectMapper = objectMapper;
     }
 
+    @Override
     public List<Job> fetchJobs(JobFilter jobFilter) {
 
         List<Job> jobs = new ArrayList<>();
@@ -49,7 +52,7 @@ public abstract class BaseAPIClientService implements APIClientService {
         return jobs;
     }
 
-    protected abstract Job toJob(JsonNode jobNode);
+    protected abstract Job toJob(Object object);
 
     protected abstract String queryParameters(JobFilter jobFilter);
 

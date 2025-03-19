@@ -7,6 +7,7 @@ public enum JobBoard {
     REMOTE_OK,
     INDEED,
     LINKEDIN,
+    WWR,
     OTHER
 
 }

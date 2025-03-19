@@ -47,6 +47,9 @@ public class MainJobService implements JobService {
     }
 
     private int saveJobs(List<Job> jobs) {
+
+        if (jobs.isEmpty()) return 0;
+
         List<Job> uniqueJobs = jobs.stream()
                 .filter(job -> !jobRepository.existsById(job.getId()))
                 .limit(SAVE_JOB_LIMIT)

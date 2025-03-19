@@ -29,7 +29,9 @@ public class RemotiveAPIClientService extends BaseAPIClientService {
     }
 
     @Override
-    public Job toJob(JsonNode node) {
+    public Job toJob(Object object) {
+
+        JsonNode node = (JsonNode) object;
         Job job = new Job();
         job.setId(new JobId(node.get("id").asText(), JobBoard.REMOTIVE));
         job.setJobBoard(JobBoard.REMOTIVE);
